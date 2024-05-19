@@ -4,6 +4,7 @@ const cors = require("cors");
 const port = process.env.PORT || 5000;
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
 
 //dotenv
 require("dotenv").config();
@@ -18,9 +19,18 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the bistro boss");
-});
+//database connection
+mongoose
+  .connect(process.env.MONGOOSE_URI)
+  .then(() => {
+    console.log("MongoDB Connected...");
+    //port
+    app.listen(port, () => console.log(`Server started on ${port}`));
+  });
 
-//port
-app.listen(port, () => console.log(`Server started on ${port}`));
+//router
+const home = require("./src/routes/get/index.get");
+const m = require("./src/middleware/test");
+
+app.use("/", m);
+app.use("/", home);
