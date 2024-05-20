@@ -30,7 +30,17 @@ mongoose
 
 //router
 const home = require("./src/routes/get/index.get");
+
+//user crud route
+const postUser = require("./src/routes/post/user.post")
+const getUser = require("./src/routes/get/users.get")
+const patchUser = require("./src/routes/patch/user.patch")
+
+//middleware  route
 const m = require("./src/middleware/test");
 
 app.use("/", m);
 app.use("/", home);
+app.use("/",postUser)
+app.use("/",getUser)
+app.use("/",patchUser)
