@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
     },
     vendor: {
         type: String,
-        default:'none'
     },
     role: {
         type: String,
@@ -32,7 +31,6 @@ const userSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        default: 'pending',
     },
     createdAt: {
         type: Date,

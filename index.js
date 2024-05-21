@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 5000;
-const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
@@ -19,28 +18,39 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+//middleware  route
+const verifyToken = require("./src/middleware/verifyToken");
+
 //database connection
-mongoose
-  .connect(process.env.MONGOOSE_URI)
-  .then(() => {
-    console.log("MongoDB Connected...");
-    //port
-    app.listen(port, () => console.log(`Server started on ${port}`));
-  });
+mongoose.connect(process.env.MONGOOSE_URI).then(() => {
+  console.log("MongoDB Connected...");
+  //port
+  app.listen(port, () => console.log(`Server started on ${port}`));
+});
+
+//middleware usage
+app.use("/users", verifyToken);
 
 //router
 const home = require("./src/routes/get/index.get");
 
 //user crud route
-const postUser = require("./src/routes/post/user.post")
-const getUser = require("./src/routes/get/users.get")
-const patchUser = require("./src/routes/patch/user.patch")
+const postUser = require("./src/routes/post/user.post");
+const getUser = require("./src/routes/get/users.get");
+const patchUser = require("./src/routes/patch/user.patch");
 
-//middleware  route
-const m = require("./src/middleware/test");
+//jwt post route
+const jwt = require("./src/routes/post/jwt.post");
 
-app.use("/", m);
+//home route
 app.use("/", home);
-app.use("/",postUser)
-app.use("/",getUser)
-app.use("/",patchUser)
+
+// users panel
+app.use("/", postUser);
+app.use("/", getUser);
+app.use("/", patchUser);
+
+//jwt panel
+app.use("/", jwt);
+
+
