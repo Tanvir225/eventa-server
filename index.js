@@ -42,6 +42,7 @@ const patchUser = require("./src/routes/patch/user.patch");
 //jwt post route
 const jwt = require("./src/routes/post/jwt.post");
 
+
 //home route
 app.use("/", home);
 
@@ -50,7 +51,7 @@ app.use("/", postUser);
 app.use("/", getUser);
 app.use("/", patchUser);
 
+
+
 //jwt panel
 app.use("/", jwt);
-
-
