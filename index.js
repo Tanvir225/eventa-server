@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //middleware  route
-const verifyToken = require("./src/middleware/verifyToken");
+//const verifyToken = require("./src/middleware/verifyToken");
 
 //database connection
 mongoose.connect(process.env.MONGOOSE_URI).then(() => {
@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGOOSE_URI).then(() => {
 });
 
 //middleware usage
-app.use("/users", verifyToken);
+//app.use("/users", verifyToken);
 
 //router
 const home = require("./src/routes/get/index.get");
@@ -38,19 +38,33 @@ const home = require("./src/routes/get/index.get");
 const postUser = require("./src/routes/post/user.post");
 const getUser = require("./src/routes/get/users.get");
 const patchUser = require("./src/routes/patch/user.patch");
+const deleteUser = require("./src/routes/delete/user.delete")
+
+//verifyAdmin route
+const verifyAdmin = require("./src/routes/get/verifyAdmin.get")
+
+//remove token import
+const removeToken = require("./src/routes/post/logout.post")
 
 //jwt post route
 const jwt = require("./src/routes/post/jwt.post");
 
-//home route
+//home api endpoint
 app.use("/", home);
 
-// users panel
+// users api endpoint
 app.use("/", postUser);
 app.use("/", getUser);
 app.use("/", patchUser);
+app.use("/", deleteUser);
 
-//jwt panel
+//verifyAdmin route api endpoint
+app.use("/", verifyAdmin)
+
+//remove token api endpoint
+app.use("/", removeToken)
+
+//jwt api endpoint
 app.use("/", jwt);
 
 

@@ -17,7 +17,7 @@ router.post("/users", async (req, res) => {
 
         //check exist user or not
         const isExistUser = await User.findOne({ email: userData?.email })
-        console.log(isExistUser);
+        //console.log(isExistUser);
         //save user into database
         if (!isExistUser) {
             const result = await newUser.save();
