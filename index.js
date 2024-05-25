@@ -49,6 +49,7 @@ const removeToken = require("./src/routes/post/logout.post")
 //jwt post route
 const jwt = require("./src/routes/post/jwt.post");
 
+
 //home api endpoint
 app.use("/", home);
 
@@ -56,15 +57,6 @@ app.use("/", home);
 app.use("/", postUser);
 app.use("/", getUser);
 app.use("/", patchUser);
-app.use("/", deleteUser);
-
-//verifyAdmin route api endpoint
-app.use("/", verifyAdmin)
-
-//remove token api endpoint
-app.use("/", removeToken)
 
 //jwt api endpoint
 app.use("/", jwt);
-
-
