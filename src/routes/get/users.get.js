@@ -11,7 +11,9 @@ const users = mongoose.model('users',userSchema)
 //middleware
 const verifyToken = require('../../middleware/verifyToken')
 
-router.get("/users",verifyToken,async(req,res)=>{
+const verifyAdmin = require('../../middleware/verifyAdmin')
+
+router.get("/users",verifyToken,verifyAdmin,async(req,res)=>{
     const result = await users.find().sort({createdAt:-1})
     res.send(result)
 })

@@ -41,7 +41,7 @@ const patchUser = require("./src/routes/patch/user.patch");
 const deleteUser = require("./src/routes/delete/user.delete")
 
 //verifyAdmin route
-const verifyAdmin = require("./src/routes/get/verifyAdmin.get")
+const admin = require("./src/routes/get/admin.get")
 
 //remove token import
 const removeToken = require("./src/routes/post/logout.post")
@@ -57,6 +57,12 @@ app.use("/", home);
 app.use("/", postUser);
 app.use("/", getUser);
 app.use("/", patchUser);
+
+//logout api endpoint
+app.use("/", removeToken)
+
+//verifyAdmin api endpoint
+app.use("/", admin)
 
 //jwt api endpoint
 app.use("/", jwt);

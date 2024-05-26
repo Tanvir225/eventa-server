@@ -24,7 +24,7 @@ router.get("/users/:email",verifyToken,async(req,res)=>{
         isAdmin = user?.role  === "admin";
     }
 
-    res.send({isAdmin})
+    res.send({isAdmin:isAdmin})
 })
 
 

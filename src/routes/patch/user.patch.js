@@ -8,6 +8,8 @@ const userSchema = require('../../Schema/userSchema')
 
 //model
 const users = mongoose.model('users',userSchema)
+//const verifyToken = require("../../middleware/verifyToken")
+//const verifyAdmin = require("../../middleware/verifyAdmin")
 
 router.patch("/users/:email",async(req,res)=>{
     const email = req.params.email
