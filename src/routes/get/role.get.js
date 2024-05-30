@@ -19,7 +19,7 @@ router.get("/users/:email",verifyToken,async(req,res)=>{
 
     const query = {email:email};
     const user = await users.findOne(query);
-    console.log(user);
+    //console.log(user);
    
     if (user) {
         res.send({
