@@ -19,12 +19,22 @@ router.get("/users/:email",verifyToken,async(req,res)=>{
 
     const query = {email:email};
     const user = await users.findOne(query);
-    let isAdmin = false;
+    console.log(user);
+   
     if (user) {
-        isAdmin = user?.role  === "admin";
+        res.send({
+            isAdmin : user?.role === 'admin',
+            isVendor : user?.role === 'vendor',
+            isVendorSatus : user?.status === 'pending',
+            role : user?.role
+        })
+    }
+    else{
+        res.status(404).send({message:"user not found"})
     }
 
-    res.send({isAdmin:isAdmin})
+
+    
 })
 
 

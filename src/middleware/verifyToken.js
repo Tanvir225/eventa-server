@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 router.use(async (req, res, next) => {
   //token get from cookie
   const token = req?.cookies?.token;
-  console.log("token inside from middleware", token);
+  //console.log("token inside from middleware", token);
 
   //check token
   if (!token) {
