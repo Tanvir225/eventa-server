@@ -39,7 +39,7 @@ const postUser = require("./src/routes/post/user.post");
 const getUser = require("./src/routes/get/users.get");
 const patchUser = require("./src/routes/patch/user.patch");
 const deleteUser = require("./src/routes/delete/user.delete")
-
+const logOut = require('./src/routes/post/logout.post')
 //verifyRole route
 const role = require("./src/routes/get/role.get")
 
@@ -50,16 +50,6 @@ const removeToken = require("./src/routes/post/logout.post")
 
 //jwt post route
 const jwt = require("./src/routes/post/jwt.post");
-
-
-//home api endpoint
-app.use("/", home);
-
-// users api endpoint
-app.use("/", postUser);
-app.use("/", getUser);
-app.use("/", patchUser);
-app.use("/", deleteUser);
 
 //logout api endpoint
 app.use("/", removeToken)
@@ -73,3 +63,17 @@ app.use("/", role)
 
 //jwt api endpoint
 app.use("/", jwt);
+
+//home api endpoint
+app.use("/", home);
+
+// users api endpoint
+app.use("/", postUser);
+app.use("/", getUser);
+app.use("/", patchUser);
+app.use("/", deleteUser);
+
+app.use("/",logOut)
+
+
+
