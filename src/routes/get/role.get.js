@@ -26,6 +26,7 @@ router.get("/users/:email",verifyToken,async(req,res)=>{
         return res.send({
             isAdmin : user?.role === 'admin',
             isVendor : user?.role === 'vendor',
+            vendorType : user?.vendor,
             isVendorSatus : user?.status === 'pending',
             role : user?.role
         })
