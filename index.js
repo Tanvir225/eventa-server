@@ -40,6 +40,12 @@ const getUser = require("./src/routes/get/users.get");
 const patchUser = require("./src/routes/patch/user.patch");
 const deleteUser = require("./src/routes/delete/user.delete")
 const logOut = require('./src/routes/post/logout.post')
+
+//vendortype
+const vendorType = require('./src/routes/get/vendorType.get')
+//vendorArea
+const vendorArea = require('./src/routes/get/vendorArea.get')
+
 //verifyRole route
 const role = require("./src/routes/get/role.get")
 
@@ -72,6 +78,11 @@ app.use("/", postUser);
 app.use("/", getUser);
 app.use("/", patchUser);
 app.use("/", deleteUser);
+
+//find vendorType
+app.use("/",vendorType)
+//find vendorArea
+app.use("/",vendorArea)
 
 app.use("/",logOut)
 

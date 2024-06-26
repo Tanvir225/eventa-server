@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
     },
     vendor: {
         type: String,
+        vendorType:['hall', 'car', 'flower', 'parlour']
+    },
+    area: {
+        type: String,
+        area:['mirpur', 'ajimpur', 'gulshan', 'dhanmondi','motijheel','shyamoli','gabtoli','savar']
     },
     role: {
         type: String,
