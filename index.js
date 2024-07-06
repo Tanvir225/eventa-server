@@ -34,6 +34,9 @@ mongoose.connect(process.env.MONGOOSE_URI).then(() => {
 //router
 const home = require("./src/routes/get/index.get");
 
+//hallVendor patch route 
+const patchHallProfile = require('./src/routes/patch/hallProfile.patch')
+
 //user crud route
 const postUser = require("./src/routes/post/user.post");
 const getUser = require("./src/routes/get/users.get");
@@ -66,7 +69,6 @@ app.use("/", role)
 
 
 
-
 //jwt api endpoint
 app.use("/", jwt);
 
@@ -84,7 +86,12 @@ app.use("/",vendorType)
 //find vendorArea
 app.use("/",vendorArea)
 
+
+//hallVendor post route api endPoint
+app.use("/",patchHallProfile)
+
 app.use("/",logOut)
+
 
 
 
