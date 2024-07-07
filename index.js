@@ -34,8 +34,7 @@ mongoose.connect(process.env.MONGOOSE_URI).then(() => {
 //router
 const home = require("./src/routes/get/index.get");
 
-//hallVendor patch route 
-const patchHallProfile = require('./src/routes/patch/hallProfile.patch')
+
 
 //user crud route
 const postUser = require("./src/routes/post/user.post");
@@ -48,6 +47,11 @@ const logOut = require('./src/routes/post/logout.post')
 const vendorType = require('./src/routes/get/vendorType.get')
 //vendorArea
 const vendorArea = require('./src/routes/get/vendorArea.get')
+
+//hallVendor patch route 
+const patchHallProfile = require('./src/routes/patch/hallProfile.patch')
+//hall facalities route
+const hallFacalities = require('./src/routes/get/hall/facalities.get')
 
 //verifyRole route
 const role = require("./src/routes/get/role.get")
@@ -89,6 +93,8 @@ app.use("/",vendorArea)
 
 //hallVendor post route api endPoint
 app.use("/",patchHallProfile)
+//hallVendor facalities route api endPoint
+app.use("/",hallFacalities)
 
 app.use("/",logOut)
 
