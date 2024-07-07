@@ -37,18 +37,20 @@ const hallSchema = new mongoose.Schema(
     facalities: {
       type: String,
       types: [
-        "Bridal Suite: Private room for bride.",
-        "Ceremony Area: Indoor/outdoor ceremony space.",
-        "Reception Hall: Hall with dance floor.",
-        "Catering: On-site customizable catering.",
-        "Decorations: Floral and themed decor.",
-        "Audio-Visual: Sound system and projector.",
-        "Event Coordination: On-site planners and coordinators.",
+        {label:'Bridal Suite',value:'Private room for bride.'},
+        {label:'Ceremony Area',value:'Indoor/outdoor ceremony space.'},
+        {label:'Catering',value:'On-site customizable catering.'},
+        {label:'Decorations',value:'Floral and themed decor.'},
+        {label:'Audio-Visual',value:'Sound system and projector.'},
+        {label:'Event Coordination',value:'On-site planners and coordinators.'}
       ],
     },
     description: {
       type: String,
       required: true,
+    },
+    status: {
+      type: String,   
     },
     terms_condition: {
       type: String,
