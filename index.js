@@ -48,6 +48,8 @@ const vendorType = require('./src/routes/get/vendorType.get')
 //vendorArea
 const vendorArea = require('./src/routes/get/vendorArea.get')
 
+//hallVendor get route 
+const getHallProfile = require('./src/routes/get/hall/hallProfile.get')
 //hallVendor patch route 
 const patchHallProfile = require('./src/routes/patch/hallProfile.patch')
 //hall facalities route
@@ -91,7 +93,9 @@ app.use("/",vendorType)
 app.use("/",vendorArea)
 
 
-//hallVendor post route api endPoint
+//hallVendor get route api endPoint
+app.use("/",getHallProfile)
+//hallVendor patch route api endPoint
 app.use("/",patchHallProfile)
 //hallVendor facalities route api endPoint
 app.use("/",hallFacalities)

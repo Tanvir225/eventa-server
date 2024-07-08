@@ -14,7 +14,7 @@ const hallSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    hall_image: {
+    business_thumbnail: {
       type: String,
       required: true,
     },
